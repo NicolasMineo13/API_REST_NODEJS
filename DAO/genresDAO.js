@@ -1,37 +1,23 @@
-// genresDAO.js
+export class GenresDAO {
+	constructor() {}
 
-import sqlite3 from 'sqlite3'
-import { open } from 'sqlite'
+	getAllGenres() {
+		throw new Error("getAllGenres method not implemented.");
+	}
 
-// Création de la base de données
-export async function openDb() {
-  return open({
-    filename: './database/database.db',
-    driver: sqlite3.Database
-  })
-}
+	getGenreById(id) {
+		throw new Error("getGenreById method not implemented.");
+	}
 
-export async function getAllGenres() {
-    const db = await openDb()
-    return db.all('SELECT * FROM genres')
-}
+	createGenre(genre) {
+		throw new Error("createGenre method not implemented.");
+	}
 
-export async function getGenreById(id) {
-    const db = await openDb()
-    return db.get('SELECT * FROM genres WHERE id = ?', id)
-}
+	updateGenre(id, genre) {
+		throw new Error("updateGenre method not implemented.");
+	}
 
-export async function createGenre(genre) {
-    const db = await openDb()
-    return db.run('INSERT INTO genres (genre) VALUES (?)', genre)
-}
-
-export async function updateGenre(id, genre) {
-    const db = await openDb()
-    return db.run('UPDATE genres SET genre = ? WHERE id = ?', genre, id)
-}
-
-export async function deleteGenre(id) {
-    const db = await openDb()
-    return db.run('DELETE FROM genres WHERE id = ?', id)
+	deleteGenre(id) {
+		throw new Error("deleteGenre method not implemented.");
+	}
 }
