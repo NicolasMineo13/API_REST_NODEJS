@@ -1,6 +1,6 @@
-const livreService = require("../Service/livreService.js");
+import LivresService from "../Services/livresService.js";
 
-const livreController = {
+const livresController = {
 	getLivres: async (req, res) => {
 		const { id, titre, date, id_auteur, id_genre } = req.query;
 		let conditions = {};
@@ -26,7 +26,7 @@ const livreController = {
 		}
 
 		try {
-			const livres = await livreService.getLivres(conditions);
+			const livres = await LivresService.getLivres(conditions);
 			res.json({ livres });
 		} catch (error) {
 			res.status(500).json({
@@ -40,7 +40,7 @@ const livreController = {
 		const { titre, date, id_auteur, id_genre } = req.query;
 
 		try {
-			const livre = await livreService.createLivre(
+			const livre = await LivresService.createLivre(
 				titre,
 				date,
 				id_auteur,
@@ -65,7 +65,7 @@ const livreController = {
 		}
 
 		try {
-			const livre = await livreService.updateLivre(id, updatedFields);
+			const livre = await LivresService.updateLivre(id, updatedFields);
 			if (livre) {
 				res.json({ message: "Livre mis à jour avec succès." });
 			} else {
@@ -88,7 +88,7 @@ const livreController = {
 		}
 
 		try {
-			const livre = await livreService.deleteLivre(id);
+			const livre = await LivresService.deleteLivre(id);
 			if (livre) {
 				res.json({ message: "Livre supprimé avec succès." });
 			} else {
@@ -103,4 +103,4 @@ const livreController = {
 	},
 };
 
-module.exports = livreController;
+export default livresController;

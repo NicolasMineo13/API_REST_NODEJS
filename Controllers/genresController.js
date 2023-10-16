@@ -1,6 +1,6 @@
-const genreService = require("../Service/genreService");
+import GenresServices from "../Services/genresService.js";
 
-const genreController = {
+const genresController = {
 	getGenres: async (req, res) => {
 		const { id, genre } = req.query;
 		let conditions = {};
@@ -14,7 +14,7 @@ const genreController = {
 		}
 
 		try {
-			const genres = await genreService.getGenres(conditions);
+			const genres = await GenresServices.getGenres(conditions);
 			res.json({ genres });
 		} catch (error) {
 			res.status(500).json({
@@ -28,7 +28,7 @@ const genreController = {
 		const { genre } = req.query;
 
 		try {
-			const newGenre = await genreService.createGenre(genre);
+			const newGenre = await GenresServices.createGenre(genre);
 			res.json({ newGenre });
 		} catch (error) {
 			res.status(500).json({
@@ -48,7 +48,7 @@ const genreController = {
 		}
 
 		try {
-			const genre = await genreService.updateGenre(id, updatedFields);
+			const genre = await GenresServices.updateGenre(id, updatedFields);
 			if (genre) {
 				res.json({ message: "Genre mis à jour avec succès." });
 			} else {
@@ -71,7 +71,7 @@ const genreController = {
 		}
 
 		try {
-			const genre = await genreService.deleteGenre(id);
+			const genre = await GenresServices.deleteGenre(id);
 			if (genre) {
 				res.json({ message: "Genre supprimé avec succès." });
 			} else {
@@ -86,4 +86,4 @@ const genreController = {
 	},
 };
 
-module.exports = genreController;
+export default genresController;

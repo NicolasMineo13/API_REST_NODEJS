@@ -1,19 +1,15 @@
-import { AuteursDAO } from "../DAO/auteursDAO.js";
-import { GenresDAO } from "../DAO/genresDAO.js";
-import { LivresDAO } from "../DAO/livresDAO.js";
-
 export class DAOFactory {
 	constructor() {}
 
 	createAuteursDAO() {
-		return new AuteursDAO();
+		throw new Error("Method not implemented");
 	}
 
 	createGenresDAO() {
-		return new GenresDAO();
+		throw new Error("Method not implemented");
 	}
 
 	createLivresDAO() {
-		return new LivresDAO();
+		throw new Error("Method not implemented");
 	}
 }

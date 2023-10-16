@@ -3,9 +3,9 @@ import { AuteursSqliteDAO } from "../DAO/auteursSqliteDAO.js";
 import { GenresSqliteDAO } from "../DAO/genresSqliteDAO.js";
 import { LivresSqliteDAO } from "../DAO/livresSqliteDAO.js";
 
-export class DAOSqliteFactory {
+export class DAOSqliteFactory extends DAOFactory {
 	constructor() {
-		this.daoFactory = new DAOFactory();
+		super(); // Appel du constructeur de la classe parente
 	}
 
 	createAuteursDAO() {

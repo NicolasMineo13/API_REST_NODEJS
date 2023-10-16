@@ -1,6 +1,6 @@
-import auteurService from "../Service/auteurService.js";
+import AuteursService from "../Services/auteursService.js";
 
-const auteurController = {
+const AuteursController = {
 	getAuteurs: async (req, res) => {
 		const { id, nom, prenom } = req.query;
 		let conditions = {};
@@ -18,12 +18,13 @@ const auteurController = {
 		}
 
 		try {
-			const auteurs = await auteurService.getAuteurs(conditions);
+			const auteurs = await AuteursService.getAuteurs(conditions);
 			res.json({ auteurs });
 		} catch (error) {
 			res.status(500).json({
 				error: "Erreur lors de la récupération des auteurs",
 				errorMsg: error.message,
+				test: "test",
 			});
 		}
 	},
@@ -32,7 +33,7 @@ const auteurController = {
 		const { nom, prenom } = req.query;
 
 		try {
-			const newAuteur = await auteurService.createAuteur(nom, prenom);
+			const newAuteur = await AuteursService.createAuteur(nom, prenom);
 			res.json({ newAuteur });
 		} catch (error) {
 			res.status(500).json({
@@ -52,7 +53,7 @@ const auteurController = {
 		}
 
 		try {
-			const auteur = await auteurService.updateAuteur(id, updatedFields);
+			const auteur = await AuteursService.updateAuteur(id, updatedFields);
 			if (auteur) {
 				res.json({ message: "Auteur mis à jour avec succès." });
 			} else {
@@ -75,7 +76,7 @@ const auteurController = {
 		}
 
 		try {
-			const auteur = await auteurService.deleteAuteur(id);
+			const auteur = await AuteursService.deleteAuteur(id);
 			if (auteur) {
 				res.json({ message: "Auteur supprimé avec succès." });
 			} else {
@@ -90,4 +91,4 @@ const auteurController = {
 	},
 };
 
-module.exports = auteurController;
+export default AuteursController;
