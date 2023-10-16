@@ -1,6 +1,6 @@
-import { AuteursDAO } from "./auteursDAO.js";
-import { GenresDAO } from "./genresDAO.js";
-import { LivresDAO } from "./livresDAO.js";
+import { AuteursDAO } from "../DAO/auteursDAO.js";
+import { GenresDAO } from "../DAO/genresDAO.js";
+import { LivresDAO } from "../DAO/livresDAO.js";
 
 export class DAOFactory {
 	constructor() {}

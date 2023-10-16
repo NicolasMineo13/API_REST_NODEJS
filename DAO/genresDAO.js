@@ -1,12 +1,8 @@
 export class GenresDAO {
 	constructor() {}
 
-	getAllGenres() {
-		throw new Error("getAllGenres method not implemented.");
-	}
-
-	getGenreById(id) {
-		throw new Error("getGenreById method not implemented.");
+	getGenres(filter) {
+		throw new Error("getGenreByFilter method not implemented.");
 	}
 
 	createGenre(genre) {

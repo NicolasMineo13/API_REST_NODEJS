@@ -1,19 +1,15 @@
 export class LivresDAO {
 	constructor() {}
 
-	getAllLivres() {
-		throw new Error("getAllLivres method not implemented.");
-	}
-
-	getLivreById(id) {
-		throw new Error("getLivreById method not implemented.");
+	getLivres(filter) {
+		throw new Error("getLivreByFilter method not implemented.");
 	}
 
 	createLivre(titre, date, id_auteur, id_genre) {
 		throw new Error("createLivre method not implemented.");
 	}
 
-	updateLivre(id, titre, date, id_auteur, id_genre) {
+	updateLivre(id, updatedFields) {
 		throw new Error("updateLivre method not implemented.");
 	}
 

@@ -11,14 +11,30 @@ export class GenresSqliteDAO extends GenresDAO {
 		});
 	}
 
-	async getAllGenres() {
+	async getGenres(filter) {
 		const db = await this.dbPromise;
-		return db.all("SELECT * FROM genres");
-	}
+		const conditions = [];
+		const params = [];
 
-	async getGenreById(id) {
-		const db = await this.dbPromise;
-		return db.get("SELECT * FROM genres WHERE id = ?", id);
+		// Construisez les conditions en fonction des filtres
+		if (filter.id) {
+			conditions.push("id = ?");
+			params.push(filter.id);
+		}
+
+		if (filter.genre) {
+			conditions.push("genre = ?");
+			params.push(filter.genre);
+		}
+
+		// Construisez la requête
+		let query = "SELECT * FROM genres";
+		if (conditions.length > 0) {
+			query += " WHERE " + conditions.join(" AND ");
+		}
+
+		// Exécutez la requête
+		return db.all(query, params);
 	}
 
 	async createGenre(genre) {
@@ -26,9 +42,37 @@ export class GenresSqliteDAO extends GenresDAO {
 		return db.run("INSERT INTO genres (genre) VALUES (?)", genre);
 	}
 
-	async updateGenre(id, genre) {
+	async updateGenre(id, updatedFields) {
 		const db = await this.dbPromise;
-		return db.run("UPDATE genres SET genre = ? WHERE id = ?", genre, id);
+
+		const { genre } = updatedFields;
+
+		// Construisez la requête en fonction des champs mis à jour
+		let query = "UPDATE genres SET";
+		const params = [];
+
+		console.log("Paramètres reçus :", updatedFields);
+
+		if (genre) {
+			query += " genre = ?,";
+			params.push(genre);
+		}
+
+		// Supprimez la dernière virgule et ajoutez la clause WHERE
+		query = query.slice(0, -1);
+		query += " WHERE id = ?";
+		params.push(id);
+
+		console.log("Requête SQL de mise à jour :", query);
+		console.log("Paramètres :", params);
+
+		const result = await db.run(query, params);
+
+		if (result.changes > 0) {
+			return true; // Mise à jour réussie
+		} else {
+			return false; // Aucun livre mis à jour (id non trouvé)
+		}
 	}
 
 	async deleteGenre(id) {

@@ -1,19 +1,15 @@
 export class AuteursDAO {
 	constructor() {}
 
-	getAllAuteurs() {
-		throw new Error("getAllAuteurs method not implemented.");
-	}
-
-	getAuteurById(id) {
-		throw new Error("getAuteurById method not implemented.");
+	getAuteurs(filter) {
+		throw new Error("getAuteursByFilter method not implemented.");
 	}
 
 	createAuteur(nom, prenom) {
 		throw new Error("createAuteur method not implemented.");
 	}
 
-	updateAuteur(id, nom, prenom) {
+	updateAuteur(id, updatedFields) {
 		throw new Error("updateAuteur method not implemented.");
 	}
 
