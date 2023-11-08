@@ -2,6 +2,7 @@ import { DAOFactory } from "../Factory/DAOFactory.js";
 import { AuteursSqliteDAO } from "../DAO/auteursSqliteDAO.js";
 import { GenresSqliteDAO } from "../DAO/genresSqliteDAO.js";
 import { LivresSqliteDAO } from "../DAO/livresSqliteDAO.js";
+import { UtilisateursSqliteDAO } from "../DAO/utilisateursSqliteDAO.js";
 
 export class DAOSqliteFactory extends DAOFactory {
 	constructor() {
@@ -18,5 +19,9 @@ export class DAOSqliteFactory extends DAOFactory {
 
 	createLivresDAO() {
 		return new LivresSqliteDAO();
+	}
+
+	createUtilisateursDAO() {
+		return new UtilisateursSqliteDAO();
 	}
 }
