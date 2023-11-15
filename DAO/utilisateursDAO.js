@@ -5,8 +5,12 @@ export class UtilisateursDAO {
 		throw new Error("getUtilisateursByFilter method not implemented.");
 	}
 
-	createUtilisateur(nom, prenom) {
+	createUtilisateur(login, password) {
 		throw new Error("createUtilisateur method not implemented.");
+	}
+
+	loginUtilisateur(login, password) {
+		throw new Error("loginUtilisateur method not implemented.");
 	}
 
 	updateUtilisateur(id, updatedFields) {

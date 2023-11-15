@@ -1,6 +1,7 @@
 import { UtilisateursDAO } from "./utilisateursDAO.js";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
+import bcrypt from "bcrypt";
 
 export class UtilisateursSqliteDAO extends UtilisateursDAO {
 	constructor() {
@@ -17,39 +18,67 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 		const params = [];
 
 		// Construisez les conditions en fonction des filtres
-		if (filter.id) {
-			conditions.push("id = ?");
-			params.push(filter.id);
-		}
+		// if (filter.id) {
+			// conditions.push("id = ?");
+			// params.push(filter.id);
+		// }
 
-		if (filter.login) {
-			conditions.push("login = ?");
-			params.push(filter.login);
-		}
+		conditions.push("login = ?");
+		params.push(filter.login);
 
-		if (filter.password) {
-			conditions.push("password = ?");
-			params.push(filter.password);
-		}
+		conditions.push("password = ?");
+		params.push(filter.password);
 
 		// Construisez la requête
 		let query = "SELECT * FROM utilisateurs";
-		if (conditions.length > 0) {
-			query += " WHERE " + conditions.join(" AND ");
-		}
+		query += " WHERE " + conditions.join(" AND ");
 
 		return db.all(query, params);
 	}
 
 	async createUtilisateur(login, password) {
 		const db = await this.dbPromise;
-		return db.run(
-			"INSERT INTO utilisateurs (login, password) VALUES (?, ?)",
-			login,
-			password
+		
+		const utilisateur = await db.get(
+			"SELECT * FROM utilisateurs WHERE login = ?",
+			login
 		);
-	}
 
+		if (utilisateur) {
+			return new Error("Ce login existe déjà !");
+		} else {
+			return db.run(
+				"INSERT INTO utilisateurs (login, password) VALUES (?, ?)",
+				login,
+				password
+			);
+		}
+	}
+	
+	async loginUtilisateur(login, password) {
+		const db = await this.dbPromise;
+	
+		const utilisateur = await db.get(
+			"SELECT * FROM utilisateurs WHERE login = ?",
+			login
+		);
+	
+		if (!utilisateur) {
+			throw new Error("Identifiants incorrects !");
+		}
+	
+		const isPasswordCorrect = await bcrypt.compare(
+			password,
+			utilisateur.password
+		);
+	
+		if (!isPasswordCorrect) {
+			throw new Error("Identifiants incorrects !");
+		}
+	
+		return utilisateur;
+	}
+	
 	async updateUtilisateur(id, updatedFields) {
 		const db = await this.dbPromise;
 

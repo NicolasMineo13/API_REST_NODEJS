@@ -8,6 +8,9 @@ import utilisateursRoutes from "./Routes/utilisateursRoutes.js";
 const app = express();
 const PORT = 3000;
 
+// Middleware pour servir les fichiers statiques depuis le dossier "public"
+app.use(express.static("public"));
+
 app.get("/jwt", (req, res) => {
 	const createTokenFromJson = (jsonData, secretKey, options = {}) => {
 		try {

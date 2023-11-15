@@ -1,4 +1,5 @@
 import UtilisateursService from "../Services/utilisateursService.js";
+import bcrypt from "bcrypt";
 
 const UtilisateursController = {
 	getUtilisateurs: async (req, res) => {
@@ -34,15 +35,44 @@ const UtilisateursController = {
 	createUtilisateur: async (req, res) => {
 		const { login, password } = req.query;
 
+		const saltRounds = 10;
+		const hashedPassword = await bcrypt.hash(password, saltRounds);
+
 		try {
 			const newUtilisateur = await UtilisateursService.createUtilisateur(
 				login,
-				password
+				hashedPassword
 			);
-			res.json({ newUtilisateur });
+
+			if (newUtilisateur instanceof Error) {
+				res.json({ status: false, error: newUtilisateur.message });
+			} else {
+				res.json({ status: true });
+			}
 		} catch (error) {
 			res.status(500).json({
 				error: "Erreur lors de la création de l'utilisateur",
+				errorMsg: error.message,
+			});
+		}
+	},
+
+	loginUtilisateur: async (req, res) => {
+		const { login, password } = req.query;
+
+		try {
+			const utilisateur = await UtilisateursService.loginUtilisateur(
+				login,
+				password
+			);
+			if (utilisateur) {
+				res.json({ status: true });
+			} else {
+				res.json({ status: false });
+			}
+		} catch (error) {
+			res.status(500).json({
+				error: "Erreur lors de la connexion de l'utilisateur",
 				errorMsg: error.message,
 			});
 		}
