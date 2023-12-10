@@ -18,27 +18,33 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 		const params = [];
 
 		// Construisez les conditions en fonction des filtres
-		// if (filter.id) {
-			// conditions.push("id = ?");
-			// params.push(filter.id);
-		// }
+		if (filter.id) {
+			conditions.push("id = ?");
+			params.push(filter.id);
+		}
 
-		conditions.push("login = ?");
-		params.push(filter.login);
+		if (filter.login) {
+			conditions.push("login = ?");
+			params.push(filter.login);
+		}
 
-		conditions.push("password = ?");
-		params.push(filter.password);
+		if (filter.password) {
+			conditions.push("password = ?");
+			params.push(filter.password);
+		}
 
 		// Construisez la requête
 		let query = "SELECT * FROM utilisateurs";
-		query += " WHERE " + conditions.join(" AND ");
+		if (conditions.length > 0) {
+			query += " WHERE " + conditions.join(" AND ");
+		}
 
 		return db.all(query, params);
 	}
 
 	async createUtilisateur(login, password) {
 		const db = await this.dbPromise;
-		
+
 		const utilisateur = await db.get(
 			"SELECT * FROM utilisateurs WHERE login = ?",
 			login
@@ -54,31 +60,31 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 			);
 		}
 	}
-	
+
 	async loginUtilisateur(login, password) {
 		const db = await this.dbPromise;
-	
+
 		const utilisateur = await db.get(
 			"SELECT * FROM utilisateurs WHERE login = ?",
 			login
 		);
-	
+
 		if (!utilisateur) {
 			throw new Error("Identifiants incorrects !");
 		}
-	
+
 		const isPasswordCorrect = await bcrypt.compare(
 			password,
 			utilisateur.password
 		);
-	
+
 		if (!isPasswordCorrect) {
 			throw new Error("Identifiants incorrects !");
 		}
-	
+
 		return utilisateur;
 	}
-	
+
 	async updateUtilisateur(id, updatedFields) {
 		const db = await this.dbPromise;
 

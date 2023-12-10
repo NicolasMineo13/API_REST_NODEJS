@@ -1,12 +1,16 @@
 import express from "express";
 import utilisateursController from "../Controllers/utilisateursController.js";
+import { verifyToken } from "../Middlewares/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/", utilisateursController.getUtilisateurs);
-router.post("/create", utilisateursController.createUtilisateur);
+// Routes publiques
+router.post("/register", utilisateursController.createUtilisateur);
 router.post("/login", utilisateursController.loginUtilisateur);
-router.patch("/:id", utilisateursController.updateUtilisateur);
-router.delete("/:id", utilisateursController.deleteUtilisateur);
+
+// Routes privées
+router.get("/", verifyToken, utilisateursController.getUtilisateurs);
+router.patch("/:id", verifyToken, utilisateursController.updateUtilisateur);
+router.delete("/:id", verifyToken, utilisateursController.deleteUtilisateur);
 
 export default router;

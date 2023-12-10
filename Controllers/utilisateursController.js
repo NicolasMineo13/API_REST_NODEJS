@@ -1,5 +1,7 @@
 import UtilisateursService from "../Services/utilisateursService.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import crypto from "crypto";
 
 const UtilisateursController = {
 	getUtilisateurs: async (req, res) => {
@@ -59,14 +61,15 @@ const UtilisateursController = {
 
 	loginUtilisateur: async (req, res) => {
 		const { login, password } = req.query;
-
 		try {
 			const utilisateur = await UtilisateursService.loginUtilisateur(
 				login,
 				password
 			);
 			if (utilisateur) {
-				res.json({ status: true });
+				const secretKey = process.env.JWT_SECRET_KEY;
+				const token = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretKey, { expiresIn: "15m" });
+				res.json({ status: true, token: token });
 			} else {
 				res.json({ status: false });
 			}

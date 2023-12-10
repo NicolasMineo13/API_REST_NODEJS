@@ -7,7 +7,7 @@ async function login() {
     const login = document.getElementById("login").value;
     const password = document.getElementById("password").value;
 
-    if(login === "" || password === ""){
+    if (login === "" || password === "") {
         alert("Veuillez remplir tous les champs");
         return;
     }
@@ -18,9 +18,9 @@ async function login() {
             headers: {
                 'Content-Type': 'application/json',
             },
-        });        
+        });
 
-        // console.log(response);
+        console.log(response);
 
         if (!response.ok) {
             throw new Error('Identifiants incorrects !.');
@@ -30,6 +30,7 @@ async function login() {
 
         if (data.status === true) {
             console.log('Connexion réussie');
+            localStorage.setItem('token', data.token);
             // Ajoutez ici le code pour rediriger l'utilisateur, afficher une nouvelle page, etc.
             window.location.href = "/main.html";
         } else {
