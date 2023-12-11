@@ -61,6 +61,10 @@ Ouvrir un terminal dans le dossier du projet et exécuter les commandes suivante
 
 ## Utilisation
 
+### Authentification
+
+Pour tester, un utilisateur avec comme login et comme password ```test``` a été créé.
+
 ### Interface Web
 
 - Ouvrir un navigateur web et se rendre à l'adresse suivante : http://localhost:3000
