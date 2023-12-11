@@ -29,7 +29,7 @@ Ce projet est une application de gestion de bibliothèque. Elle permet de gérer
 ## Extensions
 
 - **[★★★★☆] Mise en œuvre des Tests d'Intégration :**
-  - Pour tester l'intégration entre les différentes parties de votre application.
+  - Pour tester l'intégration entre les différentes parties de l'application.
 
 - **[★★★☆☆] Implémentation du Refresh Token pour la Gestion de l'Authentification :**
   - Un mécanisme de Refresh Token est mis en place pour gérer l'authentification de manière sécurisée.
@@ -40,13 +40,24 @@ Ce projet est une application de gestion de bibliothèque. Elle permet de gérer
 
 - Node.js
 
+### Dépendances principales
+
+- Express
+- JWT
+- Bcrypt
+- Mocha
+- Chai
+- Sqlite3
+
 ### Procédure
 
 Ouvrir un terminal dans le dossier du projet et exécuter les commandes suivantes :
 
-- ```npm update``` // Mettre à jour les dépendances
-- ```node app``` // Lancer l'application
-- ```npm test``` // Lancer les tests unitaires
+- ```npm install```
+
+- ```node app``` // Pour lancer l'application
+
+- ```npm test``` // Pour lancer les tests unitaires
 
 ## Utilisation
 
