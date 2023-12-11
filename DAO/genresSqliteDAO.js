@@ -51,7 +51,7 @@ export class GenresSqliteDAO extends GenresDAO {
 		let query = "UPDATE genres SET";
 		const params = [];
 
-		console.log("Paramètres reçus :", updatedFields);
+		// console.log("Paramètres reçus :", updatedFields);
 
 		if (genre) {
 			query += " genre = ?,";
@@ -63,8 +63,8 @@ export class GenresSqliteDAO extends GenresDAO {
 		query += " WHERE id = ?";
 		params.push(id);
 
-		console.log("Requête SQL de mise à jour :", query);
-		console.log("Paramètres :", params);
+		// console.log("Requête SQL de mise à jour :", query);
+		// console.log("Paramètres :", params);
 
 		const result = await db.run(query, params);
 

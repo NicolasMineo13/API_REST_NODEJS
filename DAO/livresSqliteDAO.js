@@ -72,7 +72,7 @@ export class LivresSqliteDAO extends LivresDAO {
 		let query = "UPDATE livres SET";
 		const params = [];
 
-		console.log("Paramètres reçus :", updatedFields);
+		// console.log("Paramètres reçus :", updatedFields);
 
 		if (titre) {
 			query += " titre = ?,";
@@ -99,8 +99,8 @@ export class LivresSqliteDAO extends LivresDAO {
 		query += " WHERE id = ?";
 		params.push(id);
 
-		console.log("Requête SQL de mise à jour :", query);
-		console.log("Paramètres :", params);
+		// console.log("Requête SQL de mise à jour :", query);
+		// console.log("Paramètres :", params);
 
 		const result = await db.run(query, params);
 

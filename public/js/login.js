@@ -20,25 +20,25 @@ async function login() {
             },
         });
 
-        console.log(response);
-
         if (!response.ok) {
-            throw new Error('Identifiants incorrects !.');
+            throw new Error('Identifiants incorrects 1 !.');
         }
 
         const data = await response.json();
+        console.log(data)
 
         if (data.status === true) {
             console.log('Connexion réussie');
             localStorage.setItem('token', data.token);
-            // Ajoutez ici le code pour rediriger l'utilisateur, afficher une nouvelle page, etc.
-            window.location.href = "/html/main.html";
+            localStorage.setItem('id', data.id);
+            setTimeout(() => {
+                window.location.href = "/html/main.html";
+            }, 2000);
         } else {
-            throw new Error('Identifiants incorrects !.');
+            throw new Error('Identifiants incorrects 2 !.');
         }
 
     } catch (error) {
         console.error('Erreur lors de la requête:', error.message);
-        // Affichez un message convivial à l'utilisateur pour l'informer de l'échec de la connexion.
     }
 }

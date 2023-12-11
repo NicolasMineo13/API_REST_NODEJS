@@ -1,5 +1,4 @@
 import UtilisateursService from "../Services/utilisateursService.js";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const UtilisateursController = {
@@ -36,13 +35,10 @@ const UtilisateursController = {
 	createUtilisateur: async (req, res) => {
 		const { login, password } = req.query;
 
-		const saltRounds = 10;
-		const hashedPassword = await bcrypt.hash(password, saltRounds);
-
 		try {
 			const newUtilisateur = await UtilisateursService.createUtilisateur(
 				login,
-				hashedPassword
+				password
 			);
 
 			if (newUtilisateur instanceof Error) {
@@ -66,9 +62,7 @@ const UtilisateursController = {
 				password
 			);
 			if (utilisateur) {
-				const secretKey = process.env.JWT_SECRET_KEY;
-				const token = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretKey, { expiresIn: "1h" });
-				res.json({ status: true, token: token });
+				res.json({ status: true, token: utilisateur.token, id: utilisateur.id });
 			} else {
 				res.json({ status: false });
 			}
@@ -81,13 +75,14 @@ const UtilisateursController = {
 	},
 
 	logoutUtilisateur: async (req, res) => {
-		const { token } = req.params;
+		const { id } = req.params;
+
 		try {
-			const logout = await UtilisateursService.logoutUtilisateur(token);
-			if (logout) {
+			const logout = await UtilisateursService.logoutUtilisateur(id);
+			if (logout.status === true) {
 				res.json({ status: true, message: "Utilisateur déconnecté avec succès." });
 			} else {
-				res.status(404).json({ error: "Utilisateur non trouvé." });
+				res.status(404).json({ error: "Utilisateur non connecté." });
 			}
 		} catch (error) {
 			res.status(500).json({

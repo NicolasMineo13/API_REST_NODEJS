@@ -2,6 +2,8 @@ import { UtilisateursDAO } from "./utilisateursDAO.js";
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
 export class UtilisateursSqliteDAO extends UtilisateursDAO {
 	constructor() {
@@ -45,6 +47,9 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 	async createUtilisateur(login, password) {
 		const db = await this.dbPromise;
 
+		const saltRounds = 10;
+		const hashedPassword = await bcrypt.hash(password, saltRounds);
+
 		const utilisateur = await db.get(
 			"SELECT * FROM utilisateurs WHERE login = ?",
 			login
@@ -56,7 +61,7 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 			return db.run(
 				"INSERT INTO utilisateurs (login, password) VALUES (?, ?)",
 				login,
-				password
+				hashedPassword
 			);
 		}
 	}
@@ -70,7 +75,7 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 		);
 
 		if (!utilisateur) {
-			throw new Error("Identifiants incorrects !");
+			throw new Error("Identifiants incorrects 1 !");
 		}
 
 		const isPasswordCorrect = await bcrypt.compare(
@@ -79,15 +84,56 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 		);
 
 		if (!isPasswordCorrect) {
-			throw new Error("Identifiants incorrects !");
+			throw new Error("Identifiants incorrects 2 !");
 		}
 
-		return utilisateur;
+		const oldtoken = utilisateur.token;
+
+		dotenv.config({ path: "./secretKey.env" });
+
+		const secretKey = process.env.JWT_SECRET_KEY;
+		const token = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretKey, { expiresIn: "1h" });
+
+		const addToken = await db.run("UPDATE utilisateurs SET token = ? WHERE id = ?", token, utilisateur.id);
+
+		if (oldtoken) {
+			const insertResult = await db.run("INSERT INTO tokenblacklist (token) VALUES (?)", oldtoken);
+			if (insertResult.changes < 1) {
+				throw new Error("Problème d'insertion du token dans la blacklist");
+			}
+		}
+
+		if (addToken.changes < 1) {
+			throw new Error("Problème d'ajout du token");
+		}
+
+		return { status: true, token: token, id: utilisateur.id };
 	}
 
-	async logoutUtilisateur(token) {
+	async logoutUtilisateur(id) {
 		const db = await this.dbPromise;
-		return db.run("INSERT INTO tokenblacklist (token) VALUES (?)", token);
+
+		let response = await db.get(
+			"SELECT token FROM utilisateurs WHERE id = ?",
+			id
+		);
+
+		if (!response || response.token === null) {
+			return { status: false, error: "Utilisateur non connecté !" };
+		}
+
+		let updateResult = await db.run("UPDATE utilisateurs SET token = NULL WHERE id = ?", id);
+
+		if (updateResult.changes > 0) {
+			let insertResult = await db.run("INSERT INTO tokenblacklist (token) VALUES (?)", response.token);
+			if (insertResult.changes > 0) {
+				return { status: true, message: "Utilisateur déconnecté avec succès." };
+			} else {
+				return { status: false, error: "Problème insert" };
+			}
+		} else {
+			return { status: false, error: "Problème update" }
+		}
 	}
 
 	async updateUtilisateur(id, updatedFields) {
@@ -95,14 +141,10 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 
 		const { login, password } = updatedFields;
 
-		const saltRounds = 10;
-		const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-		// Construisez la requête en fonction des champs mis à jour
 		let query = "UPDATE utilisateurs SET";
 		const params = [];
 
-		console.log("Paramètres reçus :", updatedFields);
+		// console.log("Paramètres reçus :", updatedFields);
 
 		if (login) {
 			query += " login = ?,";
@@ -111,16 +153,17 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 
 		if (password) {
 			query += " password = ?,";
+			const saltRounds = 10;
+			const hashedPassword = await bcrypt.hash(password, saltRounds);
 			params.push(hashedPassword);
 		}
 
-		// Supprimez la dernière virgule et ajoutez la clause WHERE
 		query = query.slice(0, -1);
 		query += " WHERE id = ?";
 		params.push(id);
 
-		console.log("Requête SQL de mise à jour :", query);
-		console.log("Paramètres :", params);
+		// console.log("Requête SQL de mise à jour :", query);
+		// console.log("Paramètres :", params);
 
 		const result = await db.run(query, params);
 

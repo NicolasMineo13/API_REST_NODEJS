@@ -182,7 +182,7 @@ async function createUtilisateur() {
             conditions += `password=${encodeURIComponent(password.value)}&`;
         }
 
-        const response = await fetch(`/utilisateurs/register?${conditions}`, {
+        const response = await fetch(`/utilisateurs?${conditions}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

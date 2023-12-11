@@ -13,7 +13,7 @@ export class UtilisateursDAO {
 		throw new Error("loginUtilisateur method not implemented.");
 	}
 
-	logoutUtilisateur(token) {
+	logoutUtilisateur(id) {
 		throw new Error("logoutUtilisateur method not implemented.");
 	}
 

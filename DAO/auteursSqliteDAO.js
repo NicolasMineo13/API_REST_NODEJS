@@ -59,7 +59,7 @@ export class AuteursSqliteDAO extends AuteursDAO {
 		let query = "UPDATE auteurs SET";
 		const params = [];
 
-		console.log("Paramètres reçus :", updatedFields);
+		// console.log("Paramètres reçus :", updatedFields);
 
 		if (nom) {
 			query += " nom = ?,";
@@ -76,8 +76,8 @@ export class AuteursSqliteDAO extends AuteursDAO {
 		query += " WHERE id = ?";
 		params.push(id);
 
-		console.log("Requête SQL de mise à jour :", query);
-		console.log("Paramètres :", params);
+		// console.log("Requête SQL de mise à jour :", query);
+		// console.log("Paramètres :", params);
 
 		const result = await db.run(query, params);
 

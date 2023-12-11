@@ -1,6 +1,8 @@
 async function logout() {
     const token = localStorage.getItem('token');
-    const response = await fetch(`/utilisateurs/logout/${token}`, {
+    const id = localStorage.getItem('id');
+    console.log(id);
+    const response = await fetch(`/utilisateurs/logout/${id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -16,6 +18,7 @@ async function logout() {
 
     if (data.status === true) {
         localStorage.removeItem('token');
+        localStorage.removeItem('id');
         window.location.href = '../index.html';
     }
 }
