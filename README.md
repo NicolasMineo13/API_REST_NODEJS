@@ -64,83 +64,83 @@ Ou
 
 ### Authentification
 
-- **POST** http://localhost:3000/utilisateurs/login?login=```login```&password=```password```
+- **POST** localhost:3000/utilisateurs/login?login=```login```&password=```password```
   - Permet de se connecter à l'application.
   - Paramètres :
     - login : string
     - password : string
 
-- **POST** http://localhost:3000/utilisateurs/logout/```:id```
+- **POST** localhost:3000/utilisateurs/logout/```:id```
     - Permet de se déconnecter de l'application.
     - Paramètres :
         - id : string
 
 ### Utilisateurs
 
-- **GET** http://localhost:3000/utilisateurs
+- **GET** localhost:3000/utilisateurs
   - Permet de récupérer la liste des utilisateurs.
 
-- **GET** http://localhost:3000/utilisateurs?id=```id```&login=```login```&password=```password```
+- **GET** localhost:3000/utilisateurs?id=```id```&login=```login```&password=```password```
     - Permet de filtrer les utilisateurs.
     - Paramètres :
         - id : string
         - login : string
         - password : string
 
-- **POST** http://localhost:3000/utilisateurs?login=```login```&password=```password```
+- **POST** localhost:3000/utilisateurs?login=```login```&password=```password```
     - Permet de créer un utilisateur.
     - Paramètres :
         - login : string
         - password : string
 
-- **PATCH** http://localhost:3000/utilisateurs/```:id```?login=```login```&password=```password```
+- **PATCH** localhost:3000/utilisateurs/```:id```?login=```login```&password=```password```
     - Permet de mettre à jour un utilisateur.
     - Paramètres :
         - id : string
         - login : string
         - password : string
 
-- **DELETE** http://localhost:3000/utilisateurs/```:id```
+- **DELETE** localhost:3000/utilisateurs/```:id```
     - Permet de supprimer un utilisateur.
     - Paramètres :
         - id : string
 
 ### Auteurs
 
-- **GET** http://localhost:3000/auteurs
+- **GET** localhost:3000/auteurs
   - Permet de récupérer la liste des auteurs.
 
-- **GET** http://localhost:3000/auteurs?id=```id```&nom=```nom```&prenom=```prenom```
+- **GET** localhost:3000/auteurs?id=```id```&nom=```nom```&prenom=```prenom```
     - Permet de filtrer les auteurs.
     - Paramètres :
         - id : string
         - nom : string
         - prenom : string
 
-- **POST** http://localhost:3000/auteurs?nom=```nom```&prenom=```prenom```
+- **POST** localhost:3000/auteurs?nom=```nom```&prenom=```prenom```
     - Permet de créer un auteur.
     - Paramètres :
         - nom : string
         - prenom : string
 
-- **PATCH** http://localhost:3000/auteurs/```:id```?nom=```nom```&prenom=```prenom```
+- **PATCH** localhost:3000/auteurs/```:id```?nom=```nom```&prenom=```prenom```
     - Permet de mettre à jour un auteur.
     - Paramètres :
         - id : string
         - nom : string
         - prenom : string
 
-- **DELETE** http://localhost:3000/auteurs/```:id```
+- **DELETE** localhost:3000/auteurs/```:id```
     - Permet de supprimer un auteur.
     - Paramètres :
         - id : string
 
 ### Livres
 
-- **GET** http://localhost:3000/livres
+- **GET** localhost:3000/livres
   - Permet de récupérer la liste des livres.
 
-- **GET** http://localhost:3000/livres?id=```id```&titre=```titre```&date=```date```&id_auteur=```id_auteur```&id_genre=```id_genre```
+- **GET** localhost:3000/livres?id=```id```&titre=```titre```&date=```date```&id_auteur=```id_auteur```&id_genre=```id_genre```
     - Permet de filtrer les livres.
     - Paramètres :
         - id : string
@@ -149,7 +149,7 @@ Ou
         - id_auteur : string
         - id_genre : string
 
-- **POST** http://localhost:3000/livres?titre=```titre```&date=```date```&id_auteur=```id_auteur```&id_genre=```id_genre```
+- **POST** localhost:3000/livres?titre=```titre```&date=```date```&id_auteur=```id_auteur```&id_genre=```id_genre```
     - Permet de créer un livre.
     - Paramètres :
         - titre : string
@@ -157,7 +157,7 @@ Ou
         - id_auteur : string
         - id_genre : string
 
-- **PATCH** http://localhost:3000/livres/```:id```?titre=```titre```&date=```date```&id_auteur=```id_auteur```&id_genre=```id_genre```
+- **PATCH** localhost:3000/livres/```:id```?titre=```titre```&date=```date```&id_auteur=```id_auteur```&id_genre=```id_genre```
     - Permet de mettre à jour un livre.
     - Paramètres :
         - id : string
@@ -166,34 +166,34 @@ Ou
         - id_auteur : string
         - id_genre : string
 
-- **DELETE** http://localhost:3000/livres/```:id```
+- **DELETE** localhost:3000/livres/```:id```
     - Permet de supprimer un livre.
     - Paramètres :
         - id : string
 
 ### Genres
 
-- **GET** http://localhost:3000/genres
+- **GET** localhost:3000/genres
   - Permet de récupérer la liste des genres.
 
-- **GET** http://localhost:3000/genres?id=```id```&genre=```genre```
+- **GET** localhost:3000/genres?id=```id```&genre=```genre```
     - Permet de filtrer les genres.
     - Paramètres :
         - id : string
         - genre : string
 
-- **POST** http://localhost:3000/genres?genre=```genre```
+- **POST** localhost:3000/genres?genre=```genre```
     - Permet de créer un genre.
     - Paramètres :
         - genre : string
 
-- **PATCH** http://localhost:3000/genres/```:id```?genre=```genre```
+- **PATCH** localhost:3000/genres/```:id```?genre=```genre```
     - Permet de mettre à jour un genre.
     - Paramètres :
         - id : string
         - genre : string
 
-- **DELETE** http://localhost:3000/genres/```:id```
+- **DELETE** localhost:3000/genres/```:id```
     - Permet de supprimer un genre.
     - Paramètres :
         - id : string
