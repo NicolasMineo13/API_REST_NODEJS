@@ -16,6 +16,10 @@ const UtilisateursService = {
 		return await utilisateursDAO.loginUtilisateur(login, password);
 	},
 
+	logoutUtilisateur: async (token) => {
+		return await utilisateursDAO.logoutUtilisateur(token);
+	},
+
 	updateUtilisateur: async (id, updatedFields) => {
 		return await utilisateursDAO.updateUtilisateur(id, updatedFields);
 	},

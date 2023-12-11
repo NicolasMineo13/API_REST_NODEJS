@@ -8,6 +8,8 @@ async function getLivresFilters() {
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
+    const filterTitle = document.getElementById('filterTitle');
+    filterTitle.innerHTML = 'Filtres';
 
     filterInputDiv.innerHTML = `
     <div>
@@ -39,6 +41,8 @@ async function getAuteursFilters() {
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
+    const filterTitle = document.getElementById('filterTitle');
+    filterTitle.innerHTML = 'Filtres';
 
     filterInputDiv.innerHTML = `
     <div>
@@ -62,6 +66,8 @@ async function getGenresFilters() {
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
+    const filterTitle = document.getElementById('filterTitle');
+    filterTitle.innerHTML = 'Filtres';
 
     filterInputDiv.innerHTML = `
     <div>
@@ -81,6 +87,8 @@ async function getUtilisateursFilters() {
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
+    const filterTitle = document.getElementById('filterTitle');
+    filterTitle.innerHTML = 'Filtres';
 
     filterInputDiv.innerHTML = `
     <div>

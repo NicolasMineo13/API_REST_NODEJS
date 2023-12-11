@@ -80,6 +80,23 @@ const UtilisateursController = {
 		}
 	},
 
+	logoutUtilisateur: async (req, res) => {
+		const { token } = req.params;
+		try {
+			const logout = await UtilisateursService.logoutUtilisateur(token);
+			if (logout) {
+				res.json({ status: true, message: "Utilisateur déconnecté avec succès." });
+			} else {
+				res.status(404).json({ error: "Utilisateur non trouvé." });
+			}
+		} catch (error) {
+			res.status(500).json({
+				error: "Erreur lors de la déconnexion de l'utilisateur",
+				errorMsg: error.message,
+			});
+		}
+	},
+
 	updateUtilisateur: async (req, res) => {
 		const { id } = req.params;
 		const updatedFields = req.query;

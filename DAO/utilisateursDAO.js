@@ -1,5 +1,5 @@
 export class UtilisateursDAO {
-	constructor() {}
+	constructor() { }
 
 	getUtilisateurs(filter) {
 		throw new Error("getUtilisateursByFilter method not implemented.");
@@ -11,6 +11,10 @@ export class UtilisateursDAO {
 
 	loginUtilisateur(login, password) {
 		throw new Error("loginUtilisateur method not implemented.");
+	}
+
+	logoutUtilisateur(token) {
+		throw new Error("logoutUtilisateur method not implemented.");
 	}
 
 	updateUtilisateur(id, updatedFields) {

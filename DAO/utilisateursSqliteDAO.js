@@ -85,6 +85,11 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 		return utilisateur;
 	}
 
+	async logoutUtilisateur(token) {
+		const db = await this.dbPromise;
+		return db.run("INSERT INTO tokenblacklist (token) VALUES (?)", token);
+	}
+
 	async updateUtilisateur(id, updatedFields) {
 		const db = await this.dbPromise;
 
