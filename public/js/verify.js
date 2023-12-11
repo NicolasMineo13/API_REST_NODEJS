@@ -16,7 +16,6 @@ async function isValidToken() {
         const data = await response.json();
 
         if (data.status === true) {
-            console.log('Token valide');
             return true;
         } else {
             throw new Error('Token expiré !.');

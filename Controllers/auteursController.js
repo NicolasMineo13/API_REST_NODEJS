@@ -33,8 +33,8 @@ const AuteursController = {
 		const { nom, prenom } = req.query;
 
 		try {
-			const newAuteur = await AuteursService.createAuteur(nom, prenom);
-			res.json({ newAuteur });
+			const auteur = await AuteursService.createAuteur(nom, prenom);
+			res.json({ auteur });
 		} catch (error) {
 			res.status(500).json({
 				error: "Erreur lors de la création de l'auteur",
@@ -55,7 +55,7 @@ const AuteursController = {
 		try {
 			const auteur = await AuteursService.updateAuteur(id, updatedFields);
 			if (auteur) {
-				res.json({ message: "Auteur mis à jour avec succès." });
+				res.json({ status: true, message: "Auteur mis à jour avec succès." });
 			} else {
 				res.status(404).json({ error: "Auteur non trouvé." });
 			}
@@ -68,7 +68,7 @@ const AuteursController = {
 	},
 
 	deleteAuteur: async (req, res) => {
-		const { id } = req.query;
+		const { id } = req.params;
 
 		if (!id) {
 			res.status(400).json({ error: "L'id de l'auteur est requis." });
@@ -78,7 +78,7 @@ const AuteursController = {
 		try {
 			const auteur = await AuteursService.deleteAuteur(id);
 			if (auteur) {
-				res.json({ message: "Auteur supprimé avec succès." });
+				res.json({ status: true, message: "Auteur supprimé avec succès." });
 			} else {
 				res.status(404).json({ error: "Auteur non trouvé." });
 			}

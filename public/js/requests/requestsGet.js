@@ -49,6 +49,7 @@ async function getLivres() {
                         <th>Date</th>
                         <th>Auteur</th>
                         <th>Genre</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,11 +60,15 @@ async function getLivres() {
 
             data.livres.forEach(livre => {
                 tbody.innerHTML += `
-                    <tr>
-                        <td>${livre.titre}</td>
-                        <td>${livre.date}</td> 
-                        <td>${livre.id_auteur}</td>
-                        <td>${livre.id_genre}</td>
+                    <tr id='tr${livre.id}'>
+                        <td><input id='input_titre${livre.id}' type='text' class='form-control' value="${livre.titre}"</td>
+                        <td><input id='input_date${livre.id}' type='text' class='form-control' value="${livre.date}"</td>
+                        <td><input id='input_auteur${livre.id}' type='text' class='form-control' value="${livre.id_auteur}"</td>
+                        <td><input id='input_genre${livre.id}' type='text' class='form-control' value="${livre.id_genre}"</td>
+                        <td>
+                            <button id="updateLivreFilters" onclick="updateLivreFilters('${livre.id}', '${livre.titre.replace(/'/g, "\\'")}', '${livre.date}', '${livre.id_auteur}', '${livre.id_genre}')" class="btn btn-warning">Modifier</button>
+                            <button id="deleteLivreFilters" onclick="deleteLivreFilters('${livre.id}')" class="btn btn-danger">Supprimer</button>
+                        </td>
                     </tr>
                 `;
             });
@@ -119,6 +124,7 @@ async function getAuteurs() {
                 <tr>
                     <th>Nom</th>
                     <th>Prénom</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -129,9 +135,13 @@ async function getAuteurs() {
 
             data.auteurs.forEach(auteur => {
                 tbody.innerHTML += `
-                <tr>
-                    <td>${auteur.nom}</td>
-                    <td>${auteur.prenom}</td> 
+                <tr id='tr${auteur.id}'>
+                    <td><input id='input_nom${auteur.id}' type='text' class='form-control' value="${auteur.nom}"</td>
+                    <td><input id='input_prenom${auteur.id}' type='text' class='form-control' value="${auteur.prenom}"</td>
+                    <td>
+                        <button id="updateAuteurFilters" onclick="updateAuteurFilters('${auteur.id}', '${auteur.nom.replace(/'/g, "\\'")}', '${auteur.prenom.replace(/'/g, "\\'")}')" class="btn btn-warning">Modifier</button>
+                        <button id="deleteAuteurFilters" onclick="deleteAuteurFilters('${auteur.id}')" class="btn btn-danger">Supprimer</button>
+                    </td>
                 </tr>
             `;
             });
@@ -180,7 +190,8 @@ async function getGenres() {
             table.innerHTML = `
             <thead class="bg-secondary text-white">
                 <tr>
-                    <th>Nom</th>
+                    <th>Libellé</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -191,8 +202,12 @@ async function getGenres() {
 
             data.genres.forEach(genre => {
                 tbody.innerHTML += `
-                <tr>
-                    <td>${genre.genre}</td>
+                <tr id='tr${genre.id}'>
+                    <td><input id='input_libelle${genre.id}' type='text' class='form-control' value="${genre.genre}"</td>
+                    <td>
+                        <button id="updateGenreFilters" onclick="updateGenreFilters('${genre.id}', '${genre.genre.replace(/'/g, "\\'")}')" class="btn btn-warning">Modifier</button>
+                        <button id="deleteGenreFilters" onclick="deleteGenreFilters('${genre.id}')" class="btn btn-danger">Supprimer</button>
+                    </td>
                 </tr>
             `;
             });
@@ -247,6 +262,7 @@ async function getUtilisateurs() {
                 <tr>
                     <th>Login</th>
                     <th>Mot de passe</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -257,9 +273,13 @@ async function getUtilisateurs() {
 
             data.utilisateurs.forEach(utilisateur => {
                 tbody.innerHTML += `
-                <tr>
-                    <td>${utilisateur.login}</td>
-                    <td>${utilisateur.password}</td> 
+                <tr id='tr${utilisateur.id}'>
+                    <td><input id='input_login${utilisateur.id}' type='text' class='form-control' value="${utilisateur.login}"</td>
+                    <td><input id='input_password${utilisateur.id}' type='password' class='form-control' value=""</td>
+                    <td>
+                        <button id="updateUtilisateurFilters" onclick="updateUtilisateurFilters('${utilisateur.id}', '${utilisateur.login.replace(/'/g, "\\'")}', '')" class="btn btn-warning">Modifier</button>
+                        <button id="deleteUtilisateurFilters" onclick="deleteUtilisateurFilters('${utilisateur.id}')" class="btn btn-danger">Supprimer</button>
+                    </td>
                 </tr>
             `;
             });

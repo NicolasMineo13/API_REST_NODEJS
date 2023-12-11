@@ -50,7 +50,7 @@ const genresController = {
 		try {
 			const genre = await GenresServices.updateGenre(id, updatedFields);
 			if (genre) {
-				res.json({ message: "Genre mis à jour avec succès." });
+				res.json({ status: true, message: "Genre mis à jour avec succès." });
 			} else {
 				res.status(404).json({ error: "Genre non trouvé." });
 			}
@@ -63,7 +63,7 @@ const genresController = {
 	},
 
 	deleteGenre: async (req, res) => {
-		const { id } = req.query;
+		const { id } = req.params;
 
 		if (!id) {
 			res.status(400).json({ error: "L'id du genre est requis." });
@@ -73,7 +73,7 @@ const genresController = {
 		try {
 			const genre = await GenresServices.deleteGenre(id);
 			if (genre) {
-				res.json({ message: "Genre supprimé avec succès." });
+				res.json({ status: true, message: "Genre supprimé avec succès." });
 			} else {
 				res.status(404).json({ error: "Genre non trouvé." });
 			}

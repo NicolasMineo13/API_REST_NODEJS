@@ -67,7 +67,7 @@ const livresController = {
 		try {
 			const livre = await LivresService.updateLivre(id, updatedFields);
 			if (livre) {
-				res.json({ message: "Livre mis à jour avec succès." });
+				res.json({ status: true, message: "Livre mis à jour avec succès." });
 			} else {
 				res.status(404).json({ error: "Livre non trouvé." });
 			}
@@ -80,7 +80,7 @@ const livresController = {
 	},
 
 	deleteLivre: async (req, res) => {
-		const { id } = req.query;
+		const { id } = req.params;
 
 		if (!id) {
 			res.status(400).json({ error: "L'id du livre est requis." });
@@ -90,7 +90,7 @@ const livresController = {
 		try {
 			const livre = await LivresService.deleteLivre(id);
 			if (livre) {
-				res.json({ message: "Livre supprimé avec succès." });
+				res.json({ status: true, message: "Livre supprimé avec succès." });
 			} else {
 				res.status(404).json({ error: "Livre non trouvé." });
 			}

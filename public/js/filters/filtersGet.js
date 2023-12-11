@@ -4,6 +4,7 @@ document.getElementById('getGenresFilters').addEventListener('click', getGenresF
 document.getElementById('getUtilisateursFilters').addEventListener('click', getUtilisateursFilters);
 
 async function getLivresFilters() {
+    hideResult();
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
@@ -26,7 +27,7 @@ async function getLivresFilters() {
         <input id="id_genre" type="text" class="form-control" placeholder="Pas de filtre...">
     </div>
     <div class="mt-3">
-        <button id="getLivres" class="btn btn-primary">Afficher</button>
+        <button id="getLivres" class="btn btn-primary">Filtrer et afficher</button>
     </div>
     `;
 
@@ -34,6 +35,7 @@ async function getLivresFilters() {
 }
 
 async function getAuteursFilters() {
+    hideResult();
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
@@ -48,7 +50,7 @@ async function getAuteursFilters() {
         <input id="prenom" type="text" class="form-control" placeholder="Pas de filtre...">
     </div>
     <div class="mt-3">
-        <button id="getAuteurs" class="btn btn-primary">Afficher</button>
+        <button id="getAuteurs" class="btn btn-primary">Filtrer et afficher</button>
     </div>
     `;
 
@@ -56,6 +58,7 @@ async function getAuteursFilters() {
 }
 
 async function getGenresFilters() {
+    hideResult();
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
@@ -66,7 +69,7 @@ async function getGenresFilters() {
         <input id="nom" type="text" class="form-control" placeholder="Pas de filtre...">
     </div>
     <div class="mt-3">
-        <button id="getGenres" class="btn btn-primary">Afficher</button>
+        <button id="getGenres" class="btn btn-primary">Filtrer et afficher</button>
     </div>
     `;
 
@@ -74,6 +77,7 @@ async function getGenresFilters() {
 }
 
 async function getUtilisateursFilters() {
+    hideResult();
     const filterDiv = document.getElementById('filterDiv');
     filterDiv.classList.remove('d-none');
     const filterInputDiv = document.getElementById('filterInputDiv');
@@ -88,9 +92,14 @@ async function getUtilisateursFilters() {
         <input id="password" type="text" class="form-control" placeholder="Pas de filtre...">
     </div>
     <div class="mt-3">
-        <button id="getUtilisateurs" class="btn btn-primary">Afficher</button>
+        <button id="getUtilisateurs" class="btn btn-primary">Filtrer et afficher</button>
     </div>
     `;
 
     document.getElementById('getUtilisateurs').addEventListener('click', getUtilisateurs);
+}
+
+async function hideResult() {
+    const resultDiv = document.getElementById('tableDiv');
+    resultDiv.classList.add('d-none');
 }

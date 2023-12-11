@@ -1,7 +1,6 @@
 import UtilisateursService from "../Services/utilisateursService.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import crypto from "crypto";
 
 const UtilisateursController = {
 	getUtilisateurs: async (req, res) => {
@@ -98,7 +97,7 @@ const UtilisateursController = {
 				updatedFields
 			);
 			if (utilisateur) {
-				res.json({ message: "Utilisateur mis à jour avec succès." });
+				res.json({ status: true, message: "Utilisateur mis à jour avec succès." });
 			} else {
 				res.status(404).json({ error: "Utilisateur non trouvé." });
 			}
@@ -111,7 +110,7 @@ const UtilisateursController = {
 	},
 
 	deleteUtilisateur: async (req, res) => {
-		const { id } = req.query;
+		const { id } = req.params;
 
 		if (!id) {
 			res.status(400).json({
@@ -123,7 +122,7 @@ const UtilisateursController = {
 		try {
 			const utilisateur = await UtilisateursService.deleteUtilisateur(id);
 			if (utilisateur) {
-				res.json({ message: "Utilisateur supprimé avec succès." });
+				res.json({ status: true, message: "Utilisateur supprimé avec succès." });
 			} else {
 				res.status(404).json({ error: "Utilisateur non trouvé." });
 			}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <title>Bibliothèque - Accueil</title>
 </head>
 <body style="background-color: lightgrey;">
@@ -17,10 +17,8 @@
             <div class="w-75 bg-white rounded p-3 shadow-sm">
                 <h1 class="text-center">Livres</h1>
                 <div class="d-flex w-100 justify-content-center gap-2">
-                    <button id="getLivresFilters" class="btn btn-primary">Voir</button>
+                    <button id="getLivresFilters" class="btn btn-primary">Afficher</button>
                     <button id="createLivreFilters" class="btn btn-primary">Créer</button>
-                    <button id="updateLivreFilters" class="btn btn-primary">Modifier</button>
-                    <button id="deleteLivreFilters" class="btn btn-primary">Supprimer</button>
                 </div>
             </div>
         </div>
@@ -28,10 +26,10 @@
             <div class="w-75 bg-white rounded p-3 shadow-sm">
                 <h1 class="text-center">Auteurs</h1>
                 <div class="d-flex w-100 justify-content-center gap-2">
-                    <button id="getAuteursFilters" class="btn btn-primary">Voir</button>
+                    <button id="getAuteursFilters" class="btn btn-primary">Afficher</button>
                     <button id="createAuteurFilters" class="btn btn-primary">Créer</button>
-                    <button id="updateAuteurFilters" class="btn btn-primary">Modifier</button>
-                    <button id="deleteAuteurFilters" class="btn btn-primary">Supprimer</button>
+                    <!-- <button id="updateAuteurFilters" class="btn btn-primary">Modifier</button>
+                    <button id="deleteAuteurFilters" class="btn btn-primary">Supprimer</button> -->
                 </div>
             </div>
         </div>
@@ -39,10 +37,10 @@
             <div class="w-75 bg-white rounded p-3 shadow-sm">
                 <h1 class="text-center">Genres</h1>
                 <div class="d-flex w-100 justify-content-center gap-2">
-                    <button id="getGenresFilters" class="btn btn-primary">Voir</button>
+                    <button id="getGenresFilters" class="btn btn-primary">Afficher</button>
                     <button id="createGenreFilters" class="btn btn-primary">Créer</button>
-                    <button id="updateGenreFilters" class="btn btn-primary">Modifier</button>
-                    <button id="deleteGenreFilters" class="btn btn-primary">Supprimer</button>
+                    <!-- <button id="updateGenreFilters" class="btn btn-primary">Modifier</button>
+                    <button id="deleteGenreFilters" class="btn btn-primary">Supprimer</button> -->
                 </div>
             </div>
         </div>
@@ -50,18 +48,21 @@
             <div class="w-75 bg-white rounded p-3 shadow-sm">
                 <h1 class="text-center">Utilisateurs</h1>
                 <div class="d-flex w-100 justify-content-center gap-2">
-                    <button id="getUtilisateursFilters" class="btn btn-primary">Voir</button>
+                    <button id="getUtilisateursFilters" class="btn btn-primary">Afficher</button>
                     <button id="createUtilisateurFilters" class="btn btn-primary">Créer</button>
-                    <button id="updateUtilisateurFilters" class="btn btn-primary">Modifier</button>
-                    <button id="deleteUtilisateurFilters" class="btn btn-primary">Supprimer</button>
+                    <!-- <button id="updateUtilisateurFilters" class="btn btn-primary">Modifier</button>
+                    <button id="deleteUtilisateurFilters" class="btn btn-primary">Supprimer</button> -->
                 </div>
             </div>
         </div>
     </div>
     <div id="filterDiv" class="d-flex w-100 justify-content-center mt-3 d-none">
         <div class="w-75 bg-white rounded p-3 shadow-sm">
-            <h1 class="text-center">Filtres</h1>
+            <h1 id="filterTitle" class="text-center">Filtres</h1>
             <div id="filterInputDiv" class="form-group"></div>
+            <div id="filterResponseMessageDiv" class="mt-3 d-none">
+                <span id="filterResponseMessage"></span>
+            </div>
         </div>
     </div>
     <div id="tableDiv" class="d-flex w-100 justify-content-center mt-3 d-none">
@@ -73,7 +74,13 @@
         </div>
     </div>
 </body>
-<script src="verify.js"></script>
-<script src="requests.js"></script>
-<script src="filters.js"></script>
+<script src="../js/verify.js"></script>
+<script src="../js/filters/filtersGet.js"></script>
+<script src="../js/filters/filtersCreate.js"></script>
+<script src="../js/filters/filtersUpdate.js"></script>
+<script src="../js/filters/filtersDelete.js"></script>
+<script src="../js/requests/requestsGet.js"></script>
+<script src="../js/requests/requestsCreate.js"></script>
+<script src="../js/requests/requestsUpdate.js"></script>
+<script src="../js/requests/requestsDelete.js"></script>
 </html>

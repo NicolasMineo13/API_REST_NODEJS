@@ -90,6 +90,9 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 
 		const { login, password } = updatedFields;
 
+		const saltRounds = 10;
+		const hashedPassword = await bcrypt.hash(password, saltRounds);
+
 		// Construisez la requête en fonction des champs mis à jour
 		let query = "UPDATE utilisateurs SET";
 		const params = [];
@@ -103,7 +106,7 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 
 		if (password) {
 			query += " password = ?,";
-			params.push(password);
+			params.push(hashedPassword);
 		}
 
 		// Supprimez la dernière virgule et ajoutez la clause WHERE

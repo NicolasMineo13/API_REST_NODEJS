@@ -32,7 +32,7 @@ async function login() {
             console.log('Connexion réussie');
             localStorage.setItem('token', data.token);
             // Ajoutez ici le code pour rediriger l'utilisateur, afficher une nouvelle page, etc.
-            window.location.href = "/main.html";
+            window.location.href = "/html/main.html";
         } else {
             throw new Error('Identifiants incorrects !.');
         }
