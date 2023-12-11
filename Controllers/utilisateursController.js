@@ -62,7 +62,7 @@ const UtilisateursController = {
 				password
 			);
 			if (utilisateur) {
-				res.json({ status: true, token: utilisateur.token, id: utilisateur.id });
+				res.json({ status: true, token: utilisateur.token, refreshtoken: utilisateur.refreshToken, id: utilisateur.id });
 			} else {
 				res.json({ status: false });
 			}

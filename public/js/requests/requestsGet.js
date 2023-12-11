@@ -1,6 +1,7 @@
 async function getLivres() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const titre = document.getElementById('titre');
         const date = document.getElementById('date');
@@ -25,7 +26,8 @@ async function getLivres() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -101,7 +103,8 @@ async function getAuteurs() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -170,7 +173,8 @@ async function getGenres() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -240,7 +244,8 @@ async function getUtilisateurs() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 

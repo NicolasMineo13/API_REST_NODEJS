@@ -21,7 +21,7 @@ async function login() {
         });
 
         if (!response.ok) {
-            throw new Error('Identifiants incorrects 1 !.');
+            throw new Error('Identifiants incorrects !.');
         }
 
         const data = await response.json();
@@ -30,12 +30,11 @@ async function login() {
         if (data.status === true) {
             console.log('Connexion réussie');
             localStorage.setItem('token', data.token);
+            localStorage.setItem('refreshToken', data.refreshtoken);
             localStorage.setItem('id', data.id);
-            setTimeout(() => {
-                window.location.href = "/html/main.html";
-            }, 2000);
+            window.location.href = "/html/main.html";
         } else {
-            throw new Error('Identifiants incorrects 2 !.');
+            throw new Error('Identifiants incorrects !.');
         }
 
     } catch (error) {

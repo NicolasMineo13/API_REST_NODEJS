@@ -9,7 +9,8 @@ async function deleteLivre(id) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -42,7 +43,8 @@ async function deleteAuteur(id) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -75,7 +77,8 @@ async function deleteGenre(id) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -108,7 +111,8 @@ async function deleteUtilisateur(id) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 

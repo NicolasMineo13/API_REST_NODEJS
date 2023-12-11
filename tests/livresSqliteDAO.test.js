@@ -31,7 +31,6 @@ describe('LivresSqliteDAO', () => {
     it('should delete an existing livre', async () => {
         const result = await livresSqliteDAO.deleteLivre(createdLivreId);
         expect(result).to.exist;
-        expect(result.changes).to.be.a('number');
-        expect(result.changes).to.be.greaterThan(0);
+        expect(result).to.be.true;
     });
 });

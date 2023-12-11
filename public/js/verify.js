@@ -1,34 +1,41 @@
 async function isValidToken() {
     try {
-        token = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
+        const refreshToken = localStorage.getItem('refreshToken');
+
         const response = await fetch(`/verifyToken`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
         if (!response.ok) {
-            throw new Error('Token invalide !.');
+            localStorage.removeItem('token');
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('id');
+            window.location.href = '../index.html';
+            return response.json().then((err) => {
+                throw new Error(err.error);
+            });
         }
 
         const data = await response.json();
 
         if (data.status === true) {
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+            }
             return true;
         } else {
             throw new Error('Token expiré !.');
         }
     } catch (error) {
         console.error('Erreur lors de la requête:', error.message);
-        // Affichez un message convivial à l'utilisateur pour l'informer de l'échec de la connexion.
         return false;
     }
 }
 
-isValidToken().then((result) => {
-    if (!result) {
-        window.location.href = "/index.html";
-    }
-});
+isValidToken();

@@ -88,16 +88,27 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 		}
 
 		const oldtoken = utilisateur.token;
+		const oldRefreshToken = utilisateur.refreshtoken;
 
 		dotenv.config({ path: "./secretKey.env" });
 
 		const secretKey = process.env.JWT_SECRET_KEY;
-		const token = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretKey, { expiresIn: "1h" });
+		const token = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretKey, { expiresIn: "15m" });
+		const secretRefreshTokenKey = process.env.REFRESH_TOKEN_SECRET;
+		const refreshToken = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretRefreshTokenKey, { expiresIn: "7d" });
 
 		const addToken = await db.run("UPDATE utilisateurs SET token = ? WHERE id = ?", token, utilisateur.id);
+		const addRefreshToken = await db.run("UPDATE utilisateurs SET refreshToken = ? WHERE id = ?", refreshToken, utilisateur.id);
 
 		if (oldtoken) {
 			const insertResult = await db.run("INSERT INTO tokenblacklist (token) VALUES (?)", oldtoken);
+			if (insertResult.changes < 1) {
+				throw new Error("Problème d'insertion du token dans la blacklist");
+			}
+		}
+
+		if (oldRefreshToken) {
+			const insertResult = await db.run("INSERT INTO tokenblacklist (token) VALUES (?)", oldRefreshToken);
 			if (insertResult.changes < 1) {
 				throw new Error("Problème d'insertion du token dans la blacklist");
 			}
@@ -107,14 +118,18 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 			throw new Error("Problème d'ajout du token");
 		}
 
-		return { status: true, token: token, id: utilisateur.id };
+		if (addRefreshToken.changes < 1) {
+			throw new Error("Problème d'ajout du refresh token");
+		}
+
+		return { status: true, token: token, refreshToken: refreshToken, id: utilisateur.id };
 	}
 
 	async logoutUtilisateur(id) {
 		const db = await this.dbPromise;
 
 		let response = await db.get(
-			"SELECT token FROM utilisateurs WHERE id = ?",
+			"SELECT token, refreshtoken FROM utilisateurs WHERE id = ?",
 			id
 		);
 
@@ -122,11 +137,12 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 			return { status: false, error: "Utilisateur non connecté !" };
 		}
 
-		let updateResult = await db.run("UPDATE utilisateurs SET token = NULL WHERE id = ?", id);
+		let updateResult = await db.run("UPDATE utilisateurs SET token = NULL, refreshtoken = NULL WHERE id = ?", id);
 
 		if (updateResult.changes > 0) {
 			let insertResult = await db.run("INSERT INTO tokenblacklist (token) VALUES (?)", response.token);
-			if (insertResult.changes > 0) {
+			let insertResultRefresh = await db.run("INSERT INTO tokenblacklist (token) VALUES (?)", response.refreshtoken);
+			if (insertResult.changes > 0 && insertResultRefresh.changes > 0) {
 				return { status: true, message: "Utilisateur déconnecté avec succès." };
 			} else {
 				return { status: false, error: "Problème insert" };
@@ -176,6 +192,11 @@ export class UtilisateursSqliteDAO extends UtilisateursDAO {
 
 	async deleteUtilisateur(id) {
 		const db = await this.dbPromise;
-		return db.run("DELETE FROM utilisateurs WHERE id = ?", id);
+		const result = await db.run("DELETE FROM utilisateurs WHERE id = ?", id);
+		if (result.changes > 0) {
+			return true; // Suppression réussie
+		} else {
+			return false; // Aucun utilisateur supprimé (id non trouvé)
+		}
 	}
 }

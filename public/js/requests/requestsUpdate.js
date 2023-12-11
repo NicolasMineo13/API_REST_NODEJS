@@ -36,7 +36,8 @@ async function updateLivre(id, originalTitle, originalDate, originalAuthor, orig
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -88,7 +89,8 @@ async function updateAuteur(id, originalNom, originalPrenom) {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -136,7 +138,8 @@ async function updateGenre(id, originalGenre) {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -188,7 +191,8 @@ async function updateUtilisateur(id, originalLogin, originalPassword) {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 

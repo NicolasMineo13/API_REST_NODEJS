@@ -27,7 +27,7 @@ describe('UtilisateursSqliteDAO', () => {
 
     it('should logout an existing utilisateur', async () => {
         const result = await utilisateursSqliteDAO.logoutUtilisateur(createdUtilisateurId);
-        expect(result).to.be.true;
+        expect(result.status).to.be.true;
     });
 
     it('should update an existing utilisateur', async () => {
@@ -39,8 +39,7 @@ describe('UtilisateursSqliteDAO', () => {
     it('should delete an existing utilisateur', async () => {
         const result = await utilisateursSqliteDAO.deleteUtilisateur(createdUtilisateurId);
         expect(result).to.exist;
-        expect(result.changes).to.be.a('number');
-        expect(result.changes).to.be.greaterThan(0);
+        expect(result).to.be.true;
     });
 
 });

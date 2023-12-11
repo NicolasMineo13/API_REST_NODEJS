@@ -1,0 +1,668 @@
+{
+	"info": {
+		"_postman_id": "3dced6de-c8ed-42f6-97f7-276ac6bb96ff",
+		"name": "API REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30522824"
+	},
+	"item": [
+		{
+			"name": "Auteurs",
+			"item": [
+				{
+					"name": "Afficher un/des auteurs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/auteurs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auteurs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Créer un auteur",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/auteurs?nom=Test1&prenom=Test2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auteurs"
+							],
+							"query": [
+								{
+									"key": "nom",
+									"value": "Test1"
+								},
+								{
+									"key": "prenom",
+									"value": "Test2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifier un auteur",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/auteurs/112?nom=TestUpdateNom&prenom=TestUpdatePrenom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auteurs",
+								"112"
+							],
+							"query": [
+								{
+									"key": "nom",
+									"value": "TestUpdateNom"
+								},
+								{
+									"key": "prenom",
+									"value": "TestUpdatePrenom"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer un auteur",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/auteurs/112",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auteurs",
+								"112"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "Afficher un/des genres",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/genres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Créer un genre",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/genres?genre=Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"genres"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifier un genre",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/genres/104?genre=Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"genres",
+								"104"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer un genre",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/genres/103",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"genres",
+								"103"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Livres",
+			"item": [
+				{
+					"name": "Afficher un/des livres",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/livres",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Créer un livre",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/livres?titre=test&date=2015&id_auteur=4&id_genre=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livres"
+							],
+							"query": [
+								{
+									"key": "titre",
+									"value": "test"
+								},
+								{
+									"key": "date",
+									"value": "2015"
+								},
+								{
+									"key": "id_auteur",
+									"value": "4"
+								},
+								{
+									"key": "id_genre",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifier un livre",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/livres/129?titre=Test&date=1857&id_auteur=11&id_genre=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livres",
+								"129"
+							],
+							"query": [
+								{
+									"key": "titre",
+									"value": "Test"
+								},
+								{
+									"key": "date",
+									"value": "1857"
+								},
+								{
+									"key": "id_auteur",
+									"value": "11"
+								},
+								{
+									"key": "id_genre",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer un livre",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/livres/129",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"livres",
+								"129"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utilisateurs",
+			"item": [
+				{
+					"name": "Afficher un/des utilisateurs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Créer un utilisateur",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs?login=test4&password=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "test4"
+								},
+								{
+									"key": "password",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modifier un utilisateur",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/43?login=Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"43"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer un utilisateur",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/47",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"47"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/login?login=test&password=test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"login"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "test"
+								},
+								{
+									"key": "password",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMxODEzNiwiZXhwIjoxNzAyOTIyOTM2fQ.bu4N7A6QFRbPlIxNAqylx79q03PdRDGASVAtGoyXy18",
+								"type": "text"
+							},
+							{
+								"key": "Refresh-Token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImxvZ2luIjoidGVzdCIsImlhdCI6MTcwMjMyODk3NSwiZXhwIjoxNzAyOTMzNzc1fQ.iYOqnKrkB0k2ESeIaGM3BS8Lw6ayjeYtYVa56K3-zzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/utilisateurs/logout/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"utilisateurs",
+								"logout",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

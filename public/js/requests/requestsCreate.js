@@ -1,6 +1,7 @@
 async function createLivre() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const titre = document.getElementById('titre');
         const date = document.getElementById('date');
@@ -40,7 +41,8 @@ async function createLivre() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -90,7 +92,8 @@ async function createAuteur() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -136,7 +139,8 @@ async function createGenre() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 
@@ -186,7 +190,8 @@ async function createUtilisateur() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': token,
+                'Refresh-Token': refreshToken
             },
         });
 

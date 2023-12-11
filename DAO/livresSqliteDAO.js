@@ -113,6 +113,13 @@ export class LivresSqliteDAO extends LivresDAO {
 
 	async deleteLivre(id) {
 		const db = await this.dbPromise;
-		return db.run("DELETE FROM livres WHERE id = ?", id);
+
+		const result = await db.run("DELETE FROM livres WHERE id = ?", id);
+
+		if (result.changes > 0) {
+			return true; // Suppression réussie
+		} else {
+			return false; // Aucun livre supprimé (id non trouvé)
+		}
 	}
 }
