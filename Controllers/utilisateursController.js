@@ -67,7 +67,7 @@ const UtilisateursController = {
 			);
 			if (utilisateur) {
 				const secretKey = process.env.JWT_SECRET_KEY;
-				const token = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretKey, { expiresIn: "15m" });
+				const token = jwt.sign({ userId: utilisateur.id, login: utilisateur.login }, secretKey, { expiresIn: "1h" });
 				res.json({ status: true, token: token });
 			} else {
 				res.json({ status: false });

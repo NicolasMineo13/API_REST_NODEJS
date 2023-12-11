@@ -1,5 +1,5 @@
 export class DAOFactory {
-	constructor() {}
+	constructor() { }
 
 	createAuteursDAO() {
 		throw new Error("Method not implemented");
