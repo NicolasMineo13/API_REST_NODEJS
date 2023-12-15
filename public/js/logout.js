@@ -15,6 +15,7 @@ async function logout() {
     console.log(response);
 
     if (!response.ok) {
+        window.location.href = '../index.html';
         return response.json().then((err) => {
             throw new Error(err.error);
         });
