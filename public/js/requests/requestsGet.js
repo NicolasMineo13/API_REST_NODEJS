@@ -87,6 +87,7 @@ async function getLivres() {
 async function getAuteurs() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const nom = document.getElementById('nom');
         const prenom = document.getElementById('prenom');
@@ -161,6 +162,7 @@ async function getAuteurs() {
 async function getGenres() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const nom = document.getElementById('nom');
 
@@ -228,6 +230,7 @@ async function getGenres() {
 async function getUtilisateurs() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const login = document.getElementById('login');
         const password = document.getElementById('password');

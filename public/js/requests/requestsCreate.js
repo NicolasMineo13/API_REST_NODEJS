@@ -71,6 +71,7 @@ async function createLivre() {
 async function createAuteur() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const nom = document.getElementById('nom');
         const prenom = document.getElementById('prenom');
@@ -122,6 +123,7 @@ async function createAuteur() {
 async function createGenre() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const libelle = document.getElementById('libelle');
 
@@ -169,6 +171,7 @@ async function createGenre() {
 async function createUtilisateur() {
     try {
         token = localStorage.getItem('token');
+        refreshToken = localStorage.getItem('refreshToken');
 
         const login = document.getElementById('login');
         const password = document.getElementById('password');
